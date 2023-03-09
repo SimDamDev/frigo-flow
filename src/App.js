@@ -8,6 +8,7 @@ function App() {
         Frigo Flow
       </header>
       <h1>ceci est un test</h1>
+      <h2>vu que ca marchait pas, ceci est un autre test</h2>
     </div>
   );
 }
