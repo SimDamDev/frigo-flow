@@ -7,6 +7,7 @@ function App() {
       <header className="App-header">
         Frigo Flow
       </header>
+      <h1>ceci est un test</h1>
     </div>
   );
 }
