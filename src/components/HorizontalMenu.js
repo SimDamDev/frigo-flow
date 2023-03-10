@@ -1,11 +1,17 @@
 import React from "react";
-// eslint-disable-next-line no-unused-vars
-import { Component } from "react";
 import { Menu } from "antd";
 
-const HorizontalMenu = () => {
+const HorizontalMenu = ({ onMenuClick, activeMenu }) => {
+    const handleMenuClick = (e) => {
+        onMenuClick(e.key);
+    };
+
     return (
-        <Menu mode="horizontal">
+        <Menu
+            mode="horizontal"
+            onClick={handleMenuClick}
+            selectedKeys={[activeMenu]}
+        >
             <Menu.Item key="home">Accueil</Menu.Item>
             <Menu.Item key="database">Database</Menu.Item>
             <Menu.Item key="add ingredient">Ajouter ingredients</Menu.Item>
