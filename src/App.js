@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import HorizontalMenu from "./components/HorizontalMenu";
 import LoginForm from "./components/LoginForm";
-import FirebaseAuthService from "./FirebaseAuthService";
-import "./App.css";
-import firebase from "./FirebaseConfig";
+import "./App.css"
 
 function App() {
     const [activeMenu, setActiveMenu] = useState("");
