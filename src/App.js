@@ -1,28 +1,29 @@
 import React, { useState } from "react";
 import HorizontalMenu from "./components/HorizontalMenu";
-import LoginForm from "./components/LoginForm";
-import "./App.css"
-import FirebaseAuthService from "./FirebaseAuthService";
-
+import SignupOrLogin from "./components/SignupOrLogin";
+import "./App.css";
 
 function App() {
-    const [activeMenu, setActiveMenu] = useState("");
+    const [activeMenuKey, setActiveMenuKey] = useState("");
 
-    const handleMenuClick = (key) => {
-        setActiveMenu(key);
+    const handleMenuClick = (menuKey) => {
+        setActiveMenuKey(menuKey);
     };
 
+    const showLoginComponent = () => {
+        return activeMenuKey === "login" ? <SignupOrLogin /> : null;
+    };
 
     return (
         <div className="App">
             <header className="App-header">Frigo Flow</header>
-            <body>
+            <main>
                 <HorizontalMenu
                     onMenuClick={handleMenuClick}
-                    activeMenu={activeMenu}
+                    activeMenu={activeMenuKey}
                 />
-                {activeMenu === "login" ? <LoginForm /> : null}
-            </body>
+                {showLoginComponent()}
+            </main>
         </div>
     );
 }
