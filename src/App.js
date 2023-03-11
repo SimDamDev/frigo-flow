@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import HorizontalMenu from "./components/HorizontalMenu";
 import LoginForm from "./components/LoginForm";
 import "./App.css"
+import FirebaseAuthService from "./FirebaseAuthService";
+
 
 function App() {
     const [activeMenu, setActiveMenu] = useState("");
@@ -9,6 +11,7 @@ function App() {
     const handleMenuClick = (key) => {
         setActiveMenu(key);
     };
+
 
     return (
         <div className="App">
