@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import "../LoginForm.css";
 import FirebaseAuthService from "../FirebaseAuthService";
+import EmailPasswordFields from "./EmailPasswordFields";
 
 const SignupForm = ({ onToggleSignup }) => {
     const [step, setStep] = useState(1);
@@ -36,45 +37,20 @@ const SignupForm = ({ onToggleSignup }) => {
 
     const image = <circle cx="25" cy="25" r="20" fill="red" />;
 
-        const handleSigninClick = (e) => {
-            e.preventDefault();
-            onToggleSignup();
-        };
+    const handleSigninClick = (e) => {
+        e.preventDefault();
+        onToggleSignup();
+    };
 
     return (
         <div className="login-form-container">
             <h2>Inscription</h2>
             {step === 1 && (
                 <Form name="basic">
-                    <Form.Item
-                        label="Email"
-                        name="email"
-                        rules={[
-                            {
-                                type: "email",
-                                required: true,
-                                message: "Veuillez saisir votre email",
-                            },
-                        ]}
-                    >
-                        <Input value={email} onChange={handleEmailChange} />
-                    </Form.Item>
-
-                    <Form.Item
-                        label="Mot de passe"
-                        name="password"
-                        rules={[
-                            {
-                                required: true,
-                                message: "Veuillez saisir votre mot de passe",
-                            },
-                        ]}
-                    >
-                        <Input.Password
-                            value={password}
-                            onChange={handlePasswordChange}
-                        />
-                    </Form.Item>
+                    <EmailPasswordFields
+                        initialValues={{ email: "", password: "" }}
+                        onSubmit={handleSignup}
+                    />
 
                     <Form.Item>
                         <Button

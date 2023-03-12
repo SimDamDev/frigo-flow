@@ -5,6 +5,7 @@ import "../LoginForm.css";
 import FirebaseAuthService from "../FirebaseAuthService";
 import SocialLogin from "./SocialLogin.js";
 import NotYetImplemented from "./NotYetImplemented.js";
+import EmailPasswordFields from "./EmailPasswordFields";
 
 const LoginForm = ({ onToggleSignup }) => {
     const [networkName, setNetworkName] = useState("");
@@ -15,8 +16,7 @@ const LoginForm = ({ onToggleSignup }) => {
         remember: false,
     });
 
-
-     const handleInputChange = (e) => {
+    const handleInputChange = (e) => {
         // Get the current value from the form
         const { name, value, checked } = e.target;
         // Update the formData object
@@ -28,7 +28,7 @@ const LoginForm = ({ onToggleSignup }) => {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-    
+
         try {
             await FirebaseAuthService.loginUser(
                 formData.email,
@@ -55,7 +55,8 @@ const LoginForm = ({ onToggleSignup }) => {
         }, 30000);
     };
 
-    const handleSignupClick = (e) => { // function to handle signup click event
+    const handleSignupClick = (e) => {
+        // function to handle signup click event
         e.preventDefault(); // prevent default behavior
         onToggleSignup(); // call onToggleSignup() function
     };
@@ -64,39 +65,10 @@ const LoginForm = ({ onToggleSignup }) => {
         <div className="login-form-container">
             <h2>Connectez-vous</h2>
             <Form name="basic" onFinish={handleLogin}>
-                <Form.Item
-                    label="Adresse email"
-                    name="email"
-                    rules={[
-                        {
-                            required: true,
-                            message: "Veuillez saisir votre adresse email",
-                        },
-                    ]}
-                >
-                    <Input
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                    />
-                </Form.Item>
-
-                <Form.Item
-                    label="Mot de passe"
-                    name="password"
-                    rules={[
-                        {
-                            required: true,
-                            message: "Veuillez saisir votre mot de passe",
-                        },
-                    ]}
-                >
-                    <Input.Password
-                        name="password"
-                        value={formData.password}
-                        onChange={handleInputChange}
-                    />
-                </Form.Item>
+                <EmailPasswordFields
+                    initialValues={{ email: "", password: "" }}
+                    onSubmit={handleLogin}
+                />
 
                 <Form.Item name="remember" valuePropName="checked">
                     <Checkbox

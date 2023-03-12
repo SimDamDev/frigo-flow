@@ -6,20 +6,25 @@ const HorizontalMenu = ({ onMenuClick, activeMenu }) => {
         onMenuClick(e.key);
     };
 
+    const menuItems = [
+        { key: "home", label: "Accueil" },
+        { key: "database", label: "Database" },
+        { key: "add ingredient", label: "Ajouter ingredients" },
+        { key: "add recipes", label: "Ajouter recettes" },
+        {
+            key: "login",
+            label: "Login",
+            style: { marginLeft: "auto" },
+        },
+    ];
+
     return (
         <Menu
             mode="horizontal"
             onClick={handleMenuClick}
             selectedKeys={[activeMenu]}
-        >
-            <Menu.Item key="home">Accueil</Menu.Item>
-            <Menu.Item key="database">Database</Menu.Item>
-            <Menu.Item key="add ingredient">Ajouter ingredients</Menu.Item>
-            <Menu.Item key="add recipes">Ajouter recettes</Menu.Item>
-            <Menu.Item key="login" style={{ marginLeft: "auto" }}>
-                Login
-            </Menu.Item>
-        </Menu>
+            items={menuItems}
+        />
     );
 };
 
