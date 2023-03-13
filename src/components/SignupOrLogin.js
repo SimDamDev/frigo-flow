@@ -1,6 +1,6 @@
 import { useState } from "react";
 import LoginForm from "./LoginForm";
-import SignupForm from "./SignupForm";
+import SignupForm from "./SignupForm/SignupForm.js";
 
 function SignupOrLogin() {
     const [isSigningUp, setIsSigningUp] = useState(false);

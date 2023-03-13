@@ -11,12 +11,12 @@ const validationSchema = Yup.object().shape({
         .required("Mot de passe requis"),
 });
 
-const EmailPasswordFields = ({ initialValues, onSubmit }) => {
+const EmailPasswordFields = ({ initialValues, onFormSubmit }) => {
     return (
         <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={onSubmit}
+            onSubmit={(values) => onFormSubmit(values)}
         >
             {(formik) => (
                 <>
@@ -51,7 +51,7 @@ EmailPasswordFields.propTypes = {
         email: PropTypes.string.isRequired,
         password: PropTypes.string.isRequired,
     }).isRequired,
-    onSubmit: PropTypes.func.isRequired,
+    onFormSubmit: PropTypes.func.isRequired,
 };
 
 export default EmailPasswordFields;

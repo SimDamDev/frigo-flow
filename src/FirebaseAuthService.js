@@ -12,6 +12,8 @@ const auth = firebase.auth;
 
 const registerUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
+    //TODO ajouter mail de confirmation
+    //TODO ajouter les autres info de l'utilisateur
 };
 
 const loginUser = (email, password) => {
